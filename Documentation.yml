@@ -1,0 +1,213 @@
+models:
+  - name: transfer_orders
+    description: Shows all inventory transactions that involve transfer from a branch to another
+    
+    columns:
+      - name: transfer_order_transaction_id
+        description: Primary key for transfer orders 
+        data_type: varchar
+      
+      - name: reference
+        description: Unique identifier of transactions
+        data_type: varchar
+      
+      - name: business_date
+        description: The date the order was created (yyyy-mm-dd)
+        data_type: date
+
+      - name: created_at
+        description: The date and time the order was created (yyyy-mm-dd hh:mm:ss)
+        data_type: timestamp
+
+      - name: creator_name
+        description: The user who created the order
+        data_type: varchar
+
+      - name: warehouse_name
+        description: The branch sending the order
+        data_type: varchar
+      
+      - name: branch_name
+        description: The branch receiving the order
+        data_type: varchar
+
+      - name: status
+        description: The status of the order
+        tests:
+          - accepted_values:
+              values:
+                - 1
+                - 2
+                - 3
+                - 4
+        data_type: numeric
+
+      - name: inventory_item_sku
+        description: Unique identifier of an inventory item
+        data_type: varchar
+
+      - name: inventory_item_name
+        description: Name of inventory item 
+        data_type: varchar
+
+      - name: inventory_item_storage_unit
+        description: Item storage unit 
+        data_type: varchar
+
+      - name: inventory_item_ingredient_unit
+        description: Item ingredient unit
+        data_type: varchar
+
+      - name: inventory_item_storage_to_ingredient_factor
+        description: Item storage unit conversion to ingredient unit
+        data_type: numeric
+
+      - name: inventory_item_costing_method 
+        description: 
+        data_type: numeric
+
+      - name: inventory_item_is_product
+        description: Is the item the final product?
+        data_type: boolean
+
+      - name: inventory_item_transaction_quantity
+        description: Quantity of item ordered
+        data_type: numeric
+
+      - name: updated_at
+        description: The date and time the order was last updated
+        data_type: timestamp
+
+      - name: poster_name 
+        description: The user who finalised the order
+        data_type: varchar
+
+      - name: notes
+        description: Additional information
+        data_type: varchar
+
+        
+  - name: total_orders
+    description: Shows details about sales transactions 
+    
+    columns:
+      - name: order_id
+        description: Primary key for the sales orders 
+        data_type: varchar
+
+      - name: order_date
+        description: The date the first item of the order was added (yyyy-mm-dd)
+        data_type: date
+
+      - name: order_time
+        description: The time the first item of the order was added (hh-mm-ss)
+        data_type: timestamp
+
+      - name: store
+        description: The order processing store
+        data_type: varchar
+
+      - name: order_taken_by
+        description: The user who created the order
+        data_type: varchar
+
+      - name: product_count
+        description: The number of products on an order
+        data_type: numeric
+      
+      - name: order_charge_id
+        description: Unique identifier of an order charge 
+        data_type: varchar
+
+      - name: order_charge
+        description: Charges on an order
+        data_type: numeric
+
+      - name: discount_amount
+        description: Discount on an order
+        data_type: numeric
+
+      - name: tax_exclusive_discount_amount
+        description: Discount amount before tax
+        data_type: numeric
+
+      - name: subtotal_order_amount
+        description: Gross order amount 
+        data_type: numeric
+
+      - name: order_amount
+        description: The total amount payable for order
+        data_type: numeric
+
+      - name: payment_channel
+        description: The medium of payment
+        data_type: varchar
+
+      - name: order_type
+        description: Order type
+        tests:
+          - accepted_values:
+              values:
+                - 1
+                - 2
+                - 3
+                - 4 
+        data_type: numeric
+
+      name: order_status
+        description: Order status
+        tests:
+          - accepted_values:
+              values:
+                - 1
+                - 2
+                - 3
+                - 4 
+                - 5
+                - 6
+                - 7
+        data_type: numeric
+
+      name: order_source
+        description: The medium of order
+        tests:
+          - accepted_values:
+              values:
+                - 1
+                - 2
+                - 3
+        data_type: numeric
+
+      - name: disount_id
+        description: Unique identifier of a discount
+        data_type: varchar
+
+      - name: promotion_id
+        description: Unique identifier of a promotion
+        data_type: varchar
+
+      - name: coupon_id
+        description: Unique identifier of a coupon
+        data_type: varchar
+
+      - name: gift_card_product_id
+        description: Unique identifier of a gift card
+        data_type: varchar
+
+      - name: customer_id
+        description: Unique identifier of a customer
+        data_type: varchar
+      
+      - name: notes
+        description: Additional information
+        data_type: varchar
+
+      - name: order_opened_at
+        description: The date and time the order was initiated (yyyy-mm-dd hh:mm:ss)
+        data_type: timestamp
+
+      - name: order_opdated_at
+        description: The date and time the order was closed (yyyy-mm-dd hh:mm:ss)
+        data_type: timestamp
+
+      
